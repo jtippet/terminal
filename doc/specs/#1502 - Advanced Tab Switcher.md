@@ -11,7 +11,7 @@ issue id: 1502
 
 Currently, the user is able to cycle through tabs on the tab bar. However, this horizontal cycling can be pretty inconvenient when the tab titles are long, or when there are too many tabs on the tab bar. In addition, a common use case is to switch between two tabs, e.g. when one tab is used as reference and the other is the actively worked-on tab. If the tabs are not right next to each other on the tab bar, it could be difficult to quickly swap between the two. To try to alleviate some of those pain points, we want to create an advanced tab switcher.
 
-This spec will cover the design of the switcher, and how a user would interact with the switcher. It would be keyboard driven and would give a pop-up display of a vertical list of tabs in a box. The tab switcher would also be able to display the tabs in Most Recently Used (MRU) order, which allows a user to quickly switch between two tabs with a single keychord press.
+This spec will cover the design of the switcher, and how a user would interact with the switcher. It would be keyboard driven (TODO: Should we also let the user click on the tabs to switch to? Should we have mouse support or keep it kb driven?) and would give a pop-up display of a vertical list of tabs. The tab switcher would also be able to display the tabs in Most Recently Used (MRU) order.
 
 ## Inspiration
 
@@ -51,52 +51,53 @@ The two dismissal keys are <kbd>esc</kbd> and <kbd>enter</kbd>. When <kbd>esc</k
 TODO: What happens if the user presses the keychord for opening again? Should it dismiss? Should it do nothing?
 
 ### Most Recently Used Order
-We'll provide a setting that will allow the list of tabs to be presented in either _in-order_ (_aka_. how the tabs are ordered on the tab bar), or _Most Recently Used Order_(MRU). MRU means that the tab that the terminal most recently visited will be on the top of the list, and the tab that the terminal has not visited for the longest time will be on the bottom. 
+We'll provide a setting that will allow the list of tabs to be presented in either _in-order_ (_aka_. how the tabs are ordered on the tab bar), or _Most Recently Used Order_ (MRU). MRU means that the tab that the terminal most recently visited will be on the top of the list, and the tab that the terminal has not visited for the longest time will be on the bottom. 
 
-This means that each tab will need to be kept track of in an MRU stack, and every time a tab comes into focus, that tab is taken out of the MRU stack and placed on the top. The tab switcher will then display the stack from top to bottom as the list of tabs in MRU order.
+This means that each tab will need to be kept track of in an MRU stack, and every time a tab comes into focus, that tab is taken out of the MRU stack and placed on the top. The order of tabs in this stack will effectively be the order of tabs seen in the switcher.
 
 ### Numbered Tabs
 Similar to how the user can currently switch to a particular tab with a combination of keys such as <kbd>ctrl+shift+1</kbd>, we want to have the tab switcher provide a number to each tab displayed on the tab switcher. After the user opens up the tab switcher, they can then press a number to switch to the tab assigned to that number.
 
-TODO: Ok, well what if the user has like 1000 tabs, we can't just give 0-999 to the tabs? Or can we? Should we just limit the number of tabs that get a number to 0-9? In this case, any other tab past the 10th tab will have to be cycled to. Or maybe it can be clicked on?
+TODO: Ok, well what if the user has like 1000 tabs, we can't just give 1-1000 to the tabs? Or can we? Should we just limit the number of tabs that get a number to 1-9? In this case, any other tab past the 10th tab will have to be cycled to. Or maybe it can be clicked on?
 
-### Other features to consider that may or may not be included in this implementation.
-#### Exposing Panes 
-#### Tab Search by Name/Title
-#### Tab Preview on hover
+### Key Bindings
+`AnchorKey`
+`SwitcherKey`
+
+### Available Settings
+`AnchorMode` - true or false
 
 ## What does it look like?
 
-[comment]: # What will this fix/feature look like? How will it affect the end user?
+TODO: Open questions for how it look
+1. How does it look when you have an enormous amount of tabs? Does the dialog box grow with the list of tabs? Does it stay the same size and just scroll as you cycle through the list? If that's the case, should we allow users to be able to use their scroll wheel to go through the list?
 
 ## Capabilities
 
 ### Accessibility
 
-[comment]: # How will the proposed change impact accessibility for users of screen readers, assistive input devices, etc.
-
 ### Security
-
 This won't introduce any new security issues.
 
 ### Reliability
-
 TODO :The only thing I could think of is if there's an enormous amount of tabs present? Even then, as long as the data structures used to keep track of MRU are implemented well, it shouldn't cause any bottlenecks. Not fully sure on what else there is for this point.
 
 ### Compatibility
-
-The existing way of navigating horizontally through the tabs on the tab bar should not break.
+The existing way of navigating horizontally through the tabs on the tab bar should not break? Other than that, not sure what else to consider.
 
 ### Performance, Power, and Efficiency
 
 ## Potential Issues
-
-
+N/A
 
 ## Future considerations
-
-[comment]: # What are some of the things that the fixes/features might unlock in the future? Does the implementation of this spec enable scenarios?
+1. Pane Navigation
+2. Tab Search by Name/Title
+3. Tab Preview on Hover
 
 ## Resources
 
-[comment]: # Be sure to add links to references, resources, footnotes, etc.
+<!-- Footnotes -->
+[#973]: https://github.com/microsoft/terminal/issues/973
+[#1502]: https://github.com/microsoft/terminal/issues/1502
+[#2046]: https://github.com/microsoft/terminal/issues/2046
