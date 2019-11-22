@@ -76,6 +76,7 @@ static constexpr std::string_view MoveFocusRightKey{ "moveFocusRight" }; // Lega
 static constexpr std::string_view MoveFocusUpKey{ "moveFocusUp" }; // Legacy
 static constexpr std::string_view MoveFocusDownKey{ "moveFocusDown" }; // Legacy
 static constexpr std::string_view ToggleFullscreenKey{ "toggleFullscreen" };
+static constexpr std::string_view MoveSelectionAnchorKey{ "moveSelectionAnchor" };
 
 // Specifically use a map here over an unordered_map. We want to be able to
 // iterate over these entries in-order when we're serializing the keybindings.
@@ -137,6 +138,7 @@ static const std::map<std::string_view, ShortcutAction, std::less<>> commandName
     { MoveFocusDownKey, ShortcutAction::MoveFocusDown },
     { OpenSettingsKey, ShortcutAction::OpenSettings },
     { ToggleFullscreenKey, ShortcutAction::ToggleFullscreen },
+    { MoveSelectionAnchorKey, ShortcutAction::MoveSelectionAnchor },
     { UnboundKey, ShortcutAction::Invalid },
 };
 

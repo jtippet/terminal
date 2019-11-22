@@ -78,6 +78,7 @@ namespace winrt::TerminalApp::implementation
         TYPED_EVENT(ResizePane,        TerminalApp::AppKeyBindings, TerminalApp::ActionEventArgs);
         TYPED_EVENT(MoveFocus,         TerminalApp::AppKeyBindings, TerminalApp::ActionEventArgs);
         TYPED_EVENT(ToggleFullscreen,  TerminalApp::AppKeyBindings, TerminalApp::ActionEventArgs);
+        TYPED_EVENT(KeyboardSelection, TerminalApp::AppKeyBindings, TerminalApp::ActionEventArgs);
         // clang-format on
 
     private:
